@@ -9,5 +9,8 @@ namespace ViewModel
         public FloatReactiveProperty health = new FloatReactiveProperty(1000);
         public IntReactiveProperty level = new IntReactiveProperty(1);
         public BoolReactiveProperty isAlive = new BoolReactiveProperty(true);
+        
+        public CharacterClass characterClass;
+        public int position;
     }
 }

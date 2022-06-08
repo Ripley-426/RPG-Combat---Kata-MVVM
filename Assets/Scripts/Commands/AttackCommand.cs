@@ -19,7 +19,7 @@ namespace Commands
         public void Execute()
         {
             if (IsTargetItself) return;
-            
+            if (IsTargetOutsideClassRange) return;
             float damage = _command.value;
             
             if (IsTargetStronger) damage *= 0.5f;
@@ -35,6 +35,8 @@ namespace Commands
         private bool IsTargetStronger => _target.level.Value - _character.level.Value >= 5;
         private bool IsTargetWeaker => _character.level.Value - _target.level.Value >= 5;
         private bool IsHealthZero => _target.health.Value == 0;
+        private int GetDistanceToTarget => Mathf.Abs(_target.position - _character.position);
+        private bool IsTargetOutsideClassRange => GetDistanceToTarget > _character.characterClass.range;
         
         private float ReduceHealthUntilZero(float damage)
         {

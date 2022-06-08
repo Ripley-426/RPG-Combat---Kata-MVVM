@@ -11,6 +11,8 @@ namespace Editor.Tests.Commands
         private CharacterData _character;
         private CharacterData _opponent;
         private CharacterCommand _attackCommand;
+        private CharacterClass _meleeClass;
+        private CharacterClass _rangedClass;
         
         [SetUp]
         public void Setup()
@@ -18,6 +20,13 @@ namespace Editor.Tests.Commands
             _character = ScriptableObject.CreateInstance<CharacterData>();
             _opponent = ScriptableObject.CreateInstance<CharacterData>();
             _attackCommand = ScriptableObject.CreateInstance<CharacterCommand>();
+            _meleeClass = ScriptableObject.CreateInstance<CharacterClass>();
+            _meleeClass.range = 2;
+            _rangedClass = ScriptableObject.CreateInstance<CharacterClass>();
+            _rangedClass.range = 20;
+
+            _character.characterClass = _rangedClass;
+            _opponent.characterClass = _meleeClass;
         }
         
         [Test]
@@ -92,6 +101,19 @@ namespace Editor.Tests.Commands
             command.Execute();
 
             Assert.AreEqual(initialHealth - _attackCommand.value * damageIncreasePercentage, _opponent.health.Value);
+        }
+        
+        [Test]
+        public void NotDealDamageToATargetOutsideRange()
+        {
+            float initialHealth = _opponent.health.Value;
+            _attackCommand.value = 50;
+            _opponent.position = 25;
+
+            var command = new AttackCommand(_character, _opponent, _attackCommand);
+            command.Execute();
+
+            Assert.AreEqual(initialHealth, _opponent.health.Value);
         }
     }
 }
