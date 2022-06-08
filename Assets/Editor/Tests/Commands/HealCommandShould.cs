@@ -25,13 +25,13 @@ namespace Editor.Tests.Commands
         {
             const int initialHealth = 500;
             const int healValue = 50;
-            _opponent.health.Value = initialHealth;
+            _character.health.Value = initialHealth;
             _healCommand.value = healValue;
 
-            var command = new HealCommand(_character, _opponent, _healCommand);
+            var command = new HealCommand(_character, _character, _healCommand);
             command.Execute();
             
-            Assert.AreEqual(initialHealth + healValue, _opponent.health.Value);
+            Assert.AreEqual(initialHealth + healValue, _character.health.Value);
         }
 
         [Test]
@@ -51,14 +51,28 @@ namespace Editor.Tests.Commands
         public void NotOverHeal()
         {
             const int healValue = 50;
-            int initialHealth = _opponent.health.Value - healValue/2;
+            float initialHealth = _character.health.Value - 25;
+            _character.health.Value = initialHealth;
+            _healCommand.value = healValue;
+
+            var command = new HealCommand(_character, _character, _healCommand);
+            command.Execute();
+            
+            Assert.AreEqual(1000, _character.health.Value);
+        }
+        
+        [Test]
+        public void NotLetACharacterHealOthers()
+        {
+            const int initialHealth = 500;
+            const int healValue = 50;
             _opponent.health.Value = initialHealth;
             _healCommand.value = healValue;
 
             var command = new HealCommand(_character, _opponent, _healCommand);
             command.Execute();
             
-            Assert.AreEqual(1000, _opponent.health.Value);
+            Assert.AreEqual(initialHealth, _opponent.health.Value);
         }
     }
 }

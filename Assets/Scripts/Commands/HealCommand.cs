@@ -19,6 +19,7 @@ namespace Commands
         public void Execute()
         {
             if (_target.isAlive.Value == false) return;
+            if (_target != _character) return;
             _target.health.Value = Mathf.Min(_target.health.Value + _command.value, 1000);
         }
     }

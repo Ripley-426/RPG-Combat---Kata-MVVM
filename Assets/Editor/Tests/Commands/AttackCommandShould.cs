@@ -23,7 +23,7 @@ namespace Editor.Tests.Commands
         [Test]
         public void ReduceTargetHealth()
         {
-            int initialHealth = _opponent.health.Value;
+            float initialHealth = _opponent.health.Value;
             _attackCommand.value = 50;
 
             var command = new AttackCommand(_character, _opponent, _attackCommand);
@@ -52,6 +52,46 @@ namespace Editor.Tests.Commands
             command.Execute();
             
             Assert.AreEqual(0, _opponent.health.Value);
+        }
+        
+        [Test]
+        public void NotLetACharacterDealDamageToItself()
+        {
+            float initialHealth = _character.health.Value;
+            _attackCommand.value = initialHealth/2;
+
+            var command = new AttackCommand(_character, _character, _attackCommand);
+            command.Execute();
+            
+            Assert.AreEqual(initialHealth, _character.health.Value);
+        }
+        
+        [Test]
+        public void DealLessDamageToHigherLevelTarget()
+        {
+            const float damageReductionPercentage = 0.5f;
+            float initialHealth = _opponent.health.Value;
+            _attackCommand.value = 50;
+            _opponent.level.Value = 6;
+
+            var command = new AttackCommand(_character, _opponent, _attackCommand);
+            command.Execute();
+
+            Assert.AreEqual(initialHealth - _attackCommand.value * damageReductionPercentage, _opponent.health.Value);
+        }
+        
+        [Test]
+        public void DealMoreDamageToLowerLevelTarget()
+        {
+            const float damageIncreasePercentage = 1.5f;
+            float initialHealth = _opponent.health.Value;
+            _attackCommand.value = 50;
+            _character.level.Value = 6;
+
+            var command = new AttackCommand(_character, _opponent, _attackCommand);
+            command.Execute();
+
+            Assert.AreEqual(initialHealth - _attackCommand.value * damageIncreasePercentage, _opponent.health.Value);
         }
     }
 }

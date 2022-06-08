@@ -18,7 +18,11 @@ namespace Commands
     
         public void Execute()
         {
-            _target.health.Value = Mathf.Max(_target.health.Value - _command.value, 0);
+            if (_character == _target) return;
+            float damage = _command.value;
+            if (_target.level.Value - _character.level.Value >= 5) damage *= 0.5f;
+            if (_character.level.Value - _target.level.Value >= 5) damage *= 1.5f;
+            _target.health.Value = Mathf.Max(_target.health.Value - damage, 0);
             if (_target.health.Value <= 0)
             {
                 _target.isAlive.Value = false;
