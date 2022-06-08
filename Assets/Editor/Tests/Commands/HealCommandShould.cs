@@ -10,14 +10,14 @@ namespace Editor.Tests.Commands
     {
         private CharacterData _character;
         private CharacterData _opponent;
-        private CharacterCommand _healCommand;
+        private HealingSkill _healCommand;
         
         [SetUp]
         public void Setup()
         {
             _character = ScriptableObject.CreateInstance<CharacterData>();
             _opponent = ScriptableObject.CreateInstance<CharacterData>();
-            _healCommand = ScriptableObject.CreateInstance<CharacterCommand>();
+            _healCommand = ScriptableObject.CreateInstance<HealingSkill>();
         }
         
         [Test]
@@ -26,7 +26,7 @@ namespace Editor.Tests.Commands
             const int initialHealth = 500;
             const int healValue = 50;
             _character.health.Value = initialHealth;
-            _healCommand.value = healValue;
+            _healCommand.heal = healValue;
 
             var command = new HealCommand(_character, _character, _healCommand);
             command.Execute();
@@ -53,7 +53,7 @@ namespace Editor.Tests.Commands
             const int healValue = 50;
             float initialHealth = _character.health.Value - 25;
             _character.health.Value = initialHealth;
-            _healCommand.value = healValue;
+            _healCommand.heal = healValue;
 
             var command = new HealCommand(_character, _character, _healCommand);
             command.Execute();
@@ -67,7 +67,7 @@ namespace Editor.Tests.Commands
             const int initialHealth = 500;
             const int healValue = 50;
             _opponent.health.Value = initialHealth;
-            _healCommand.value = healValue;
+            _healCommand.heal = healValue;
 
             var command = new HealCommand(_character, _opponent, _healCommand);
             command.Execute();

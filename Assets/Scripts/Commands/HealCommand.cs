@@ -8,13 +8,13 @@ namespace Commands
     {
         private readonly CharacterData _character;
         private readonly CharacterData _target;
-        private readonly CharacterCommand _command;
+        private readonly HealingSkill _healingSkill;
 
-        public HealCommand(CharacterData character, CharacterData target, CharacterCommand command)
+        public HealCommand(CharacterData character, CharacterData target, HealingSkill healingSkill)
         {
             _character = character;
             _target = target;
-            _command = command;
+            _healingSkill = healingSkill;
         }
         public void Execute()
         {
@@ -25,6 +25,6 @@ namespace Commands
 
         private bool IsTargetDead => _target.isAlive.Value == false;
         private bool IsTargetOtherThanItself => _target != _character;
-        private float IncreaseHealthUpToMaxHealthValue => Mathf.Min(_target.health.Value + _command.value, 1000);
+        private float IncreaseHealthUpToMaxHealthValue => Mathf.Min(_target.health.Value + _healingSkill.heal, 1000);
     }
 }

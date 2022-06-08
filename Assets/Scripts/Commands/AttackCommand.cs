@@ -7,20 +7,20 @@ namespace Commands
     {
         private readonly CharacterData _character;
         private readonly CharacterData _target;
-        private readonly CharacterCommand _command;
+        private readonly DamageSkill _damageSkill;
 
-        public AttackCommand(CharacterData character, CharacterData target, CharacterCommand command)
+        public AttackCommand(CharacterData character, CharacterData target, DamageSkill damageSkill)
         {
             _character = character;
             _target = target;
-            _command = command;
+            _damageSkill = damageSkill;
         }
     
         public void Execute()
         {
             if (IsTargetItself) return;
             if (IsTargetOutsideClassRange) return;
-            float damage = _command.value;
+            float damage = _damageSkill.damage;
             
             if (IsTargetStronger) damage *= 0.5f;
             if (IsTargetWeaker) damage *= 1.5f;
