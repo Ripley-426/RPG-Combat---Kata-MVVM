@@ -16,58 +16,88 @@ namespace Editor.Tests.Scenes
         }
         
         [Test]
-        public void HaveAllCharacterNameDisplayComponentsAssigned()
+        public void HaveAllCharacterNameDisplayComponentsAssignedWithReferences()
         {
-            var components = Resources.FindObjectsOfTypeAll<CharacterNameDisplay>();
+            var components = Object.FindObjectsOfType<CharacterNameDisplay>();
+
+            Assert.IsNotEmpty(components, "No components assigned");
 
             foreach (var component in components)
             {
-                if (EditorUtility.IsPersistent(component)) return;
-                Assert.NotNull(component);
-                Assert.NotNull(component.nameLabel);
-                Assert.NotNull(component.characterData);
+                Assert.NotNull(component.nameLabel, "Missing name label");
+                Assert.NotNull(component.characterData, "Missing Character Data");
             }
         }
         
         [Test]
-        public void HaveAllCharacterLevelDisplayComponentsAssigned()
+        public void HaveAllCharacterLevelDisplayComponentsAssignedWithReferences()
         {
-            var components = Resources.FindObjectsOfTypeAll<CharacterLevelDisplay>();
+            var components = Object.FindObjectsOfType<CharacterLevelDisplay>();
+
+            Assert.IsNotEmpty(components, "No components assigned");
 
             foreach (var component in components)
             {
-                if (EditorUtility.IsPersistent(component)) return;
-                Assert.NotNull(component);
-                Assert.NotNull(component.levelLabel);
-                Assert.NotNull(component.characterData);
+                Assert.NotNull(component.levelLabel, "Missing level label");
+                Assert.NotNull(component.characterData, "Missing Character Data");
             }
         }
         
         [Test]
-        public void HaveAllCharacterHealthDisplayComponentsAssigned()
+        public void HaveAllCharacterHealthDisplayComponentsAssignedWithReferences()
         {
-            var components = Resources.FindObjectsOfTypeAll<CharacterHealthDisplay>();
+            var components = Object.FindObjectsOfType<CharacterHealthDisplay>();
+
+            Assert.IsNotEmpty(components, "No components assigned");
 
             foreach (var component in components)
             {
-                if (EditorUtility.IsPersistent(component)) return;
-                Assert.NotNull(component);
-                Assert.NotNull(component.healthLabel);
-                Assert.NotNull(component.characterData);
+                Assert.NotNull(component.healthLabel,  "Missing health label");
+                Assert.NotNull(component.characterData, "Missing Character Data");
             }
         }
         
         [Test]
-        public void HaveAllCharacterClassDisplayComponentsAssigned()
+        public void HaveAllCharacterClassDisplayComponentsAssignedWithReferences()
         {
-            var components = Resources.FindObjectsOfTypeAll<CharacterClassDisplay>();
+            var components = Object.FindObjectsOfType<CharacterClassDisplay>();
 
+            Assert.IsNotEmpty(components, "No components assigned");
+            
             foreach (var component in components)
             {
-                if (EditorUtility.IsPersistent(component)) return;
-                Assert.NotNull(component);
-                Assert.NotNull(component.classLabel);
-                Assert.NotNull(component.characterData);
+                Assert.NotNull(component.classLabel, "Missing class label");
+                Assert.NotNull(component.characterData, "Missing Character Data");
+            }
+        }
+        
+        [Test]
+        public void HaveAllCharacterAttackInputComponentsAssignedWithReferences()
+        {
+            var components = Object.FindObjectsOfType<CharacterAttackInput>();
+
+            Assert.IsNotEmpty(components, "No components assigned");
+            
+            foreach (var component in components)
+            {
+                Assert.NotNull(component.cmdFactory, "Missing command factory");
+                Assert.NotNull(component.playerData, "Missing Player Data");
+                Assert.NotNull(component.opponentData, "Missing Opponent Data");
+            }
+        }
+        
+        [Test]
+        public void HaveAllCharacterHealingInputComponentsAssignedWithReferences()
+        {
+            var components = Object.FindObjectsOfType<CharacterHealingInput>();
+
+            Assert.IsNotEmpty(components, "No components assigned");
+            
+            foreach (var component in components)
+            {
+                Assert.NotNull(component.cmdFactory, "Missing command factory");
+                Assert.NotNull(component.playerData, "Missing Player Data");
+                Assert.NotNull(component.opponentData, "Missing Opponent Data");
             }
         }
     }
