@@ -6,7 +6,9 @@
         "UnityEditor.TestRunner",
         "ViewModelAssembly",
         "UniRx",
-        "CommandsAssembly"
+        "CommandsAssembly",
+        "ComponentsAssembly",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [
         "Editor"

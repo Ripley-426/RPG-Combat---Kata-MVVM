@@ -2,6 +2,7 @@ using NUnit.Framework;
 using UnityEngine;
 using ViewModel;
 using Commands;
+using UniRx;
 
 namespace Editor.Tests.Commands
 {
@@ -18,15 +19,17 @@ namespace Editor.Tests.Commands
         public void Setup()
         {
             _character = ScriptableObject.CreateInstance<CharacterData>();
+            _character.characterClass = new ReactiveProperty<CharacterClass>();
             _opponent = ScriptableObject.CreateInstance<CharacterData>();
+            _opponent.characterClass = new ReactiveProperty<CharacterClass>();
             _attackCommand = ScriptableObject.CreateInstance<DamageSkill>();
             _meleeClass = ScriptableObject.CreateInstance<CharacterClass>();
-            _meleeClass.range = 2;
+            _meleeClass.range.Value = 2;
             _rangedClass = ScriptableObject.CreateInstance<CharacterClass>();
-            _rangedClass.range = 20;
+            _rangedClass.range.Value = 20;
 
-            _character.characterClass = _rangedClass;
-            _opponent.characterClass = _meleeClass;
+            _character.characterClass.Value = _rangedClass;
+            _opponent.characterClass.Value = _meleeClass;
         }
         
         [Test]

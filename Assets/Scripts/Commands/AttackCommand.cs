@@ -36,7 +36,7 @@ namespace Commands
         private bool IsTargetWeaker => _character.level.Value - _target.level.Value >= 5;
         private bool IsHealthZero => _target.health.Value == 0;
         private int GetDistanceToTarget => Mathf.Abs(_target.position - _character.position);
-        private bool IsTargetOutsideClassRange => GetDistanceToTarget > _character.characterClass.range;
+        private bool IsTargetOutsideClassRange => GetDistanceToTarget > _character.characterClass.Value.range.Value;
         
         private float ReduceHealthUntilZero(float damage)
         {
