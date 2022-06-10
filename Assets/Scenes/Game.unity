@@ -711,6 +711,14 @@ PrefabInstance:
       propertyPath: playerData
       value: 
       objectReference: {fileID: 11400000, guid: cf8a05c7def8c4547af51274d97c21d8, type: 2}
+    - target: {fileID: 803105874292522930, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: faction
+      value: 
+      objectReference: {fileID: 11400000, guid: b4213229c23846448989a8c38d0d7080, type: 2}
+    - target: {fileID: 803105874292522930, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: characterData
+      value: 
+      objectReference: {fileID: 11400000, guid: cf8a05c7def8c4547af51274d97c21d8, type: 2}
     - target: {fileID: 1109364397127228297, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -735,10 +743,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1230015623979019919, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: faction
+      value: 
+      objectReference: {fileID: 11400000, guid: d1bca2193b6038444bafa8d2f11e18af, type: 2}
+    - target: {fileID: 1230015623979019919, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: characterData
+      value: 
+      objectReference: {fileID: 11400000, guid: cf8a05c7def8c4547af51274d97c21d8, type: 2}
     - target: {fileID: 1274025402199680051, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
       propertyPath: m_ReverseArrangement
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1347837063389147021, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: faction
+      value: 
+      objectReference: {fileID: 11400000, guid: 28f056ef95cc5df4ebba53d881788fa3, type: 2}
+    - target: {fileID: 1347837063389147021, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: characterData
+      value: 
+      objectReference: {fileID: 11400000, guid: cf8a05c7def8c4547af51274d97c21d8, type: 2}
     - target: {fileID: 1577611584540025287, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
       propertyPath: characterData
       value: 
@@ -987,6 +1011,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8103978440509057764, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: faction
+      value: 
+      objectReference: {fileID: 11400000, guid: 033f5d7d854f5a443a0d10b217841f33, type: 2}
+    - target: {fileID: 8103978440509057764, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: characterData
+      value: 
+      objectReference: {fileID: 11400000, guid: cf8a05c7def8c4547af51274d97c21d8, type: 2}
     - target: {fileID: 8280520339029023450, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1064,6 +1096,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &878680598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 878680600}
+  - component: {fileID: 878680599}
+  m_Layer: 0
+  m_Name: Opponent Factory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &878680599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878680598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf6804d20044aaab3201c59a59b100a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 11400000, guid: e7d19a496d555a54ebd23c79290ea496, type: 2}
+  opponent: {fileID: 11400000, guid: cf8a05c7def8c4547af51274d97c21d8, type: 2}
+  factions:
+  - {fileID: 11400000, guid: 033f5d7d854f5a443a0d10b217841f33, type: 2}
+  - {fileID: 11400000, guid: b4213229c23846448989a8c38d0d7080, type: 2}
+--- !u!4 &878680600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878680598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &979880180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,6 +1920,14 @@ PrefabInstance:
       propertyPath: playerData
       value: 
       objectReference: {fileID: 11400000, guid: e7d19a496d555a54ebd23c79290ea496, type: 2}
+    - target: {fileID: 803105874292522930, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: faction
+      value: 
+      objectReference: {fileID: 11400000, guid: b4213229c23846448989a8c38d0d7080, type: 2}
+    - target: {fileID: 803105874292522930, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: characterData
+      value: 
+      objectReference: {fileID: 11400000, guid: e7d19a496d555a54ebd23c79290ea496, type: 2}
     - target: {fileID: 1109364397127228297, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1864,6 +1952,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1230015623979019919, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: faction
+      value: 
+      objectReference: {fileID: 11400000, guid: d1bca2193b6038444bafa8d2f11e18af, type: 2}
+    - target: {fileID: 1230015623979019919, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: characterData
+      value: 
+      objectReference: {fileID: 11400000, guid: e7d19a496d555a54ebd23c79290ea496, type: 2}
+    - target: {fileID: 1347837063389147021, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: faction
+      value: 
+      objectReference: {fileID: 11400000, guid: 28f056ef95cc5df4ebba53d881788fa3, type: 2}
+    - target: {fileID: 1347837063389147021, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: characterData
+      value: 
+      objectReference: {fileID: 11400000, guid: e7d19a496d555a54ebd23c79290ea496, type: 2}
     - target: {fileID: 1577611584540025287, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
       propertyPath: nameLabel
       value: 
@@ -2140,6 +2244,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8103978440509057764, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: faction
+      value: 
+      objectReference: {fileID: 11400000, guid: 033f5d7d854f5a443a0d10b217841f33, type: 2}
+    - target: {fileID: 8103978440509057764, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
+      propertyPath: characterData
+      value: 
+      objectReference: {fileID: 11400000, guid: e7d19a496d555a54ebd23c79290ea496, type: 2}
     - target: {fileID: 8280520339029023450, guid: c9e2532e106d70443a2980d93c1d5687, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

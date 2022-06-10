@@ -30,10 +30,10 @@ namespace Commands
             if (IsTargetStronger) damage *= 0.5f;
             if (IsTargetWeaker) damage *= 1.5f;
             _target.health.Value = ReduceHealthUntilZero(damage);
-            if (IsHealthZero)
-            {
-                _target.isAlive.Value = false;
-            }
+            if (!IsHealthZero) return;
+            
+            _target.isAlive.Value = false;
+            _target.onZeroHealth.OnNext(true);
         }
 
         private bool IsTargetItself => _character == _target;

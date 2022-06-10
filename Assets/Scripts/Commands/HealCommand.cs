@@ -25,6 +25,7 @@ namespace Commands
             if (IsTargetDead) return;
             if (IsTargetOtherThanItself && TargetIsNotAlly) return;
             _target.health.Value = IncreaseHealthUpToMaxHealthValue;
+            if(_target.health.Value == _target.maxHealth) {_target.onFullHealth.OnNext(true);}
         }
 
         private bool IsTargetDead => _target.isAlive.Value == false;

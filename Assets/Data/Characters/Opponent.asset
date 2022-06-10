@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce49ed5d05a77140a1803d63fcda958, type: 3}
   m_Name: Opponent
   m_EditorClassIdentifier: 
+  maxHealth: 1000
   characterName:
     value: Enemy
   health:
-    value: 1000
+    value: 850
   level:
     value: 1
   isAlive:
-    value: 0
-  factions: []
+    value: 1
   characterClass:
     value: {fileID: 11400000, guid: 5cc5563affdf71a458d29b12117df950, type: 2}
   position: 0
