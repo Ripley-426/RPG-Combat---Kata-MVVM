@@ -15,11 +15,12 @@ MonoBehaviour:
   characterName:
     value: Enemy
   health:
-    value: 350
+    value: 1000
   level:
     value: 1
   isAlive:
     value: 0
+  factions: []
   characterClass:
     value: {fileID: 11400000, guid: 5cc5563affdf71a458d29b12117df950, type: 2}
   position: 0

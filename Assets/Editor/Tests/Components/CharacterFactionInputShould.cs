@@ -3,7 +3,7 @@
 namespace Editor.Tests.Components
 {
     [TestFixture] [Ignore("Missing test")]
-    public class CharacterHealingInputShould
+    public class CharacterFactionInputShould
     {
         //TODO: Ver código de CharacterAttackInputShould
     }

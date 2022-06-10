@@ -9,7 +9,7 @@
         "CommandsAssembly",
         "ComponentsAssembly",
         "Unity.TextMeshPro",
-        ""
+        "ServicesAssembly"
     ],
     "includePlatforms": [
         "Editor"

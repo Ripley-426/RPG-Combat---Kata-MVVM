@@ -1,10 +1,8 @@
 {
-    "name": "CommandsAssembly",
+    "name": "ServicesAssembly",
     "rootNamespace": "",
     "references": [
-        "GUID:d785d3dcc49c4d748b9fb17d37301ee5",
-        "GUID:560b04d1a97f54a4e82edc0cbbb69285",
-        "GUID:35175d8e31b79104eb3c8739db875cba"
+        "GUID:d785d3dcc49c4d748b9fb17d37301ee5"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

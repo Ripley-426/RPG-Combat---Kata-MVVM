@@ -1,3 +1,4 @@
+using Services;
 using UnityEngine;
 using ViewModel;
 
@@ -8,18 +9,22 @@ namespace Commands
         private readonly CharacterData _character;
         private readonly CharacterData _target;
         private readonly DamageSkill _damageSkill;
+        private readonly AllyCheckerService _allyCheckerService;
 
-        public AttackCommand(CharacterData character, CharacterData target, DamageSkill damageSkill)
+        public AttackCommand(CharacterData character, CharacterData target, DamageSkill damageSkill,
+            AllyCheckerService allyCheckerService)
         {
             _character = character;
             _target = target;
             _damageSkill = damageSkill;
+            _allyCheckerService = allyCheckerService;
         }
     
         public void Execute()
         {
             if (IsTargetItself) return;
             if (IsTargetOutsideClassRange) return;
+            if (_allyCheckerService.IsAlly()) return;
             float damage = _damageSkill.damage;
             
             if (IsTargetStronger) damage *= 0.5f;

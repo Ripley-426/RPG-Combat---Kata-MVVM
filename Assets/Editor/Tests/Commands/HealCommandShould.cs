@@ -1,5 +1,6 @@
 using Commands;
 using NUnit.Framework;
+using Services;
 using UnityEngine;
 using ViewModel;
 
@@ -8,16 +9,18 @@ namespace Editor.Tests.Commands
     [TestFixture]
     public class HealCommandShould
     {
-        private CharacterData _character;
+        private CharacterData _player;
         private CharacterData _opponent;
-        private HealingSkill _healCommand;
+        private HealingSkill _healingSkill;
+        private AllyCheckerService _allyCheckerService;
         
         [SetUp]
         public void Setup()
         {
-            _character = ScriptableObject.CreateInstance<CharacterData>();
+            _player = ScriptableObject.CreateInstance<CharacterData>();
             _opponent = ScriptableObject.CreateInstance<CharacterData>();
-            _healCommand = ScriptableObject.CreateInstance<HealingSkill>();
+            _healingSkill = ScriptableObject.CreateInstance<HealingSkill>();
+            _allyCheckerService = new AllyCheckerService(_player, _opponent);
         }
         
         [Test]
@@ -25,13 +28,13 @@ namespace Editor.Tests.Commands
         {
             const int initialHealth = 500;
             const int healValue = 50;
-            _character.health.Value = initialHealth;
-            _healCommand.heal = healValue;
+            _player.health.Value = initialHealth;
+            _healingSkill.heal = healValue;
 
-            var command = new HealCommand(_character, _character, _healCommand);
+            var command = CreateNewHealCommandToHealItself();
             command.Execute();
             
-            Assert.AreEqual(initialHealth + healValue, _character.health.Value);
+            Assert.AreEqual(initialHealth + healValue, _player.health.Value);
         }
 
         [Test]
@@ -41,7 +44,7 @@ namespace Editor.Tests.Commands
             _opponent.health.Value = initialHealth;
             _opponent.isAlive.Value = false;
 
-            var command = new HealCommand(_character, _opponent, _healCommand);
+            var command = CreateNewHealCommandToHealItself();
             command.Execute();
             
             Assert.AreEqual(initialHealth, _opponent.health.Value);
@@ -51,28 +54,56 @@ namespace Editor.Tests.Commands
         public void NotOverHeal()
         {
             const int healValue = 50;
-            float initialHealth = _character.health.Value - 25;
-            _character.health.Value = initialHealth;
-            _healCommand.heal = healValue;
+            float initialHealth = _player.health.Value - 25;
+            _player.health.Value = initialHealth;
+            _healingSkill.heal = healValue;
 
-            var command = new HealCommand(_character, _character, _healCommand);
+            var command = CreateNewHealCommandToHealItself();
             command.Execute();
             
-            Assert.AreEqual(1000, _character.health.Value);
+            Assert.AreEqual(1000, _player.health.Value);
         }
         
         [Test]
-        public void NotLetACharacterHealOthers()
+        public void NotLetACharacterHealOthersNotAlliedToItself()
         {
             const int initialHealth = 500;
             const int healValue = 50;
             _opponent.health.Value = initialHealth;
-            _healCommand.heal = healValue;
+            _healingSkill.heal = healValue;
 
-            var command = new HealCommand(_character, _opponent, _healCommand);
+            var command = CreateNewHealCommandToHealItself();
             command.Execute();
             
             Assert.AreEqual(initialHealth, _opponent.health.Value);
+        }
+
+        [Test]
+        public void HealAlliedCharacters()
+        {
+            CharacterFaction faction = ScriptableObject.CreateInstance<CharacterFaction>();
+            _player.factions.Add(faction);
+            _opponent.factions.Add(faction);
+            _opponent.health.Value = 500;
+            const int healValue = 50;
+            _healingSkill.heal = healValue;
+            
+            float initialHealth = _opponent.health.Value;
+            
+            var command = CreateNewHealCommandToHealOpponent();
+            command.Execute();
+            
+            Assert.AreEqual(initialHealth + healValue, _opponent.health.Value);
+        }
+
+        private HealCommand CreateNewHealCommandToHealItself()
+        {
+            return new HealCommand(_player, _player, _healingSkill, _allyCheckerService);
+        }
+        
+        private HealCommand CreateNewHealCommandToHealOpponent()
+        {
+            return new HealCommand(_player, _opponent, _healingSkill, _allyCheckerService);
         }
     }
 }

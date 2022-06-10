@@ -7,7 +7,7 @@ using ViewModel;
 
 namespace Editor.Tests.Components
 {
-    [TestFixture]
+    [TestFixture] [Ignore("Missing test")]
     public class CharacterAttackInputShould
     {
         // TODO: ¿Que test double usar para la command factory? Revisar mockeo de ScriptableObjects

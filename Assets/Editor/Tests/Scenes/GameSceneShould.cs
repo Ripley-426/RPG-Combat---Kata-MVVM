@@ -100,5 +100,19 @@ namespace Editor.Tests.Scenes
                 Assert.NotNull(component.opponentData, "Missing Opponent Data");
             }
         }
+        
+        [Test]
+        public void HaveAllCharacterFactionInputComponentsAssignedWithReferences()
+        {
+            var components = Object.FindObjectsOfType<CharacterFactionInput>();
+
+            Assert.IsNotEmpty(components, "No components assigned");
+            
+            foreach (var component in components)
+            {
+                Assert.NotNull(component.cmdFactory, "Missing command factory");
+                Assert.NotNull(component.playerData, "Missing Player Data");
+            }
+        }
     }
 }
