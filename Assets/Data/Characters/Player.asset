@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce49ed5d05a77140a1803d63fcda958, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
+  maxHealth: 1000
   characterName:
     value: Hero
   health:

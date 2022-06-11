@@ -31,6 +31,6 @@ namespace Commands
         private bool IsTargetDead => _target.isAlive.Value == false;
         private bool TargetIsNotAlly => !_allyCheckerService.IsAlly();
         private bool IsTargetOtherThanItself => _target != _character;
-        private float IncreaseHealthUpToMaxHealthValue => Mathf.Min(_target.health.Value + _healingSkill.heal, 1000);
+        private float IncreaseHealthUpToMaxHealthValue => Mathf.Min(_target.health.Value + _healingSkill.heal, _target.maxHealth);
     }
 }

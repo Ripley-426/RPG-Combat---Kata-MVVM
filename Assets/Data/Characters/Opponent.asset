@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   characterName:
-    value: Enemy
+    value: Allied Soldier
   health:
-    value: 850
+    value: 400
   level:
-    value: 1
+    value: 6
   isAlive:
     value: 1
   characterClass:

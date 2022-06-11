@@ -14,7 +14,8 @@ namespace Components
         public void Start()
         {
             characterData.factions.ObserveCountChanged()
-                .Subscribe(countChangeEvent => CheckAllegiance(characterData.factions));
+                .Subscribe(countChangeEvent => CheckAllegiance(characterData.factions))
+                .AddTo(this);
         }
 
         private void CheckAllegiance(ReactiveCollection<CharacterFaction> characterDataFactions)
