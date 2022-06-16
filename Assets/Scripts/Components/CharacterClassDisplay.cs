@@ -10,6 +10,7 @@ namespace Components
         public TextMeshProUGUI classLabel;
         public CharacterData characterData;
 
+        //TODO: ¿Se puede subscribir al cambio de un scriptable object en el inspector?
         public void Start()
         {
             characterData.characterClass
@@ -20,11 +21,11 @@ namespace Components
         private void UpdateClass(CharacterClass characterClass)
         {
             characterClass.className
-                .Subscribe(UpdateClass)
+                .Subscribe(UpdateClassName)
                 .AddTo(this);
         }
 
-        private void UpdateClass(string className)
+        private void UpdateClassName(string className)
         {
             classLabel.text = className;
         }

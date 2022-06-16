@@ -17,6 +17,8 @@ namespace Components
         public void Start()
         {
             _opponentGeneratorService = new OpponentGeneratorService(player, opponent, factions);
+            _opponentGeneratorService.GenerateNextOpponent();
+            
             opponent.onFullHealth
                 .Subscribe(GenerateNewOpponent)
                 .AddTo(this);

@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   characterName:
-    value: Allied Soldier
+    value: Enemy
   health:
-    value: 400
+    value: 800
   level:
-    value: 6
+    value: 1
   isAlive:
     value: 1
   characterClass:
     value: {fileID: 11400000, guid: 5cc5563affdf71a458d29b12117df950, type: 2}
-  position: 0
+  position: 2
+  characterImage: {fileID: 7805335646520212899, guid: c94faef3f0688674c944e2fabfbb1a1f, type: 3}

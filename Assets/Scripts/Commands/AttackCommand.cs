@@ -37,15 +37,11 @@ namespace Commands
         }
 
         private bool IsTargetItself => _character == _target;
+        private bool IsTargetOutsideClassRange => GetDistanceToTarget > _character.characterClass.Value.range.Value;
+        private int GetDistanceToTarget => Mathf.Abs(_target.position - _character.position);
         private bool IsTargetStronger => _target.level.Value - _character.level.Value >= 5;
         private bool IsTargetWeaker => _character.level.Value - _target.level.Value >= 5;
+        private float ReduceHealthUntilZero(float damage) => Mathf.Max(_target.health.Value - damage, 0);
         private bool IsHealthZero => _target.health.Value == 0;
-        private int GetDistanceToTarget => Mathf.Abs(_target.position - _character.position);
-        private bool IsTargetOutsideClassRange => GetDistanceToTarget > _character.characterClass.Value.range.Value;
-        
-        private float ReduceHealthUntilZero(float damage)
-        {
-            return Mathf.Max(_target.health.Value - damage, 0);
-        }
     }
 }

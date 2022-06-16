@@ -20,7 +20,12 @@ namespace Components
 
         private void CheckAllegiance(ReactiveCollection<CharacterFaction> characterDataFactions)
         {
-            notAffiliatedImage.SetActive(!characterDataFactions.Contains(faction));
+            notAffiliatedImage.SetActive(IsCharacterOutsideFaction(characterDataFactions));
+        }
+
+        private bool IsCharacterOutsideFaction(ReactiveCollection<CharacterFaction> characterDataFactions)
+        {
+            return !characterDataFactions.Contains(faction);
         }
     }
 }

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   characterName:
-    value: Hero
+    value: Juan
   health:
     value: 1000
   level:
@@ -22,5 +22,6 @@ MonoBehaviour:
   isAlive:
     value: 1
   characterClass:
-    value: {fileID: 11400000, guid: ba6aae8afe24b494ba5572c7ab982e4d, type: 2}
+    value: {fileID: 11400000, guid: 5cc5563affdf71a458d29b12117df950, type: 2}
   position: 0
+  characterImage: {fileID: -3691283762694273852, guid: c94faef3f0688674c944e2fabfbb1a1f, type: 3}

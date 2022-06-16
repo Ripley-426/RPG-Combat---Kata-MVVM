@@ -19,7 +19,7 @@ namespace Components
 
         private void UpdateHealth(float characterHealth)
         {
-            healthLabel.text = $"{characterHealth}/1000";
+            healthLabel.text = $"{characterHealth}/{characterData.maxHealth}";
         }
     }
 }
